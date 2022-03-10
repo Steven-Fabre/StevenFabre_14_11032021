@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.nav-link {
+  text-decoration: none;
+  color: #137c8b;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}

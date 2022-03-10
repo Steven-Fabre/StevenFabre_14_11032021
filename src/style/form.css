@@ -1,0 +1,46 @@
+#create-employee {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  width: 90%;
+  padding: 15px;
+  margin: auto;
+  max-width: 400px;
+  color: white;
+  background-color: #b8cbd0;
+  z-index: 5;
+}
+
+.form-title {
+  margin: 5px 0;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+}
+
+#create-employee > *,
+input,
+select {
+  line-height: 24px;
+}
+
+input {
+  border: none;
+}
+
+input:active {
+  outline: 2px solid black;
+}
+
+fieldset {
+  border: 1px white solid;
+}
