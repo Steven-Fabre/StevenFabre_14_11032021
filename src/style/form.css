@@ -44,3 +44,7 @@ input:active {
 fieldset {
   border: 1px white solid;
 }
+
+.hide {
+  display: none;
+}

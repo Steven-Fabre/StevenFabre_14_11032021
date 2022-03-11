@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { states } from "./states";
+import Modal from "./modal";
 import "../style/form.css";
 
 export default function EmployeeForm() {
@@ -12,6 +13,7 @@ export default function EmployeeForm() {
   const [city, setCity] = useState("");
   const [state, setState] = useState(states[0].abbreviation);
   const [zipCode, setZipCode] = useState("");
+  const [error, setError] = useState([]);
   const employeeData = {
     First_Name: firstName,
     Last_Name: lastName,
@@ -24,25 +26,46 @@ export default function EmployeeForm() {
     Zip_Code: zipCode,
   };
 
+  useEffect(() => {});
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     let error = [];
-    if (!firstName) error.push(`First Name`);
-    if (!lastName) error.push(`Last Name`);
-    if (!birthDate) error.push(`Date of Birth`);
-    if (!startDate) error.push(`Start Date`);
-    if (!street) error.push(`Street`);
-    if (!city) error.push(`City`);
-    if (!zipCode) error.push(`Zip Code`);
+    Object.entries(employeeData).forEach((el) => {
+      if (!el[1]) {
+        error.push(el[0]);
+      }
+    });
 
-    error.length === 0 && console.log(employeeData);
-    if (error.length >= 1) {
-      document.querySelector(".form-error").innerHTML = `${error.join(",")} ${
-        error.length >= 2 ? "are" : "is"
-      } required`;
+    if (error.length !== 0) {
+      setError(error);
     }
   };
+
+  // const asysendForm = async (obj) => {
+  //   const message = document.getElementById("form-modal");
+  //   const rawResponse = await fetch("http://127.0.0.1:3000/api/", {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(obj),
+  //   });
+  //   const content = await rawResponse.json();
+
+  //   if (content) {
+  //     message.classList.remove("hide");
+  //     message.innerHTML = "";
+  //     message.insertAdjacentHTML(
+  //       "beforeend",
+  //       `
+  //           <h1>Merci pour votre envoi</h1>
+  //           <p>Le formulaire à bien été envoyé et le point d'intérêt sera ajouté au plus vite</p>
+  //           `
+  //     );
+  //   }
+  // };
 
   return (
     <section className="form-container">
@@ -90,9 +113,9 @@ export default function EmployeeForm() {
           <option value="Human Resources">Human Resources</option>
           <option value="Legal">Legal</option>
         </select>
-        <p className="form-error"></p>
         <button className="save-button">Save</button>
       </form>
+      {error.length > 0 ? <Modal error={error} setError={setError} /> : ""}
     </section>
   );
 }
