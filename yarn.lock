@@ -3065,9 +3065,9 @@
   "version" "2.1.1"
 
 "ansi-regex@^4.1.0":
-  "integrity" "sha512-1apePfXM1UOSqw0o9IiFAovVz9M5S1Dg+4TrDwfMewQ6p/rmMueb7tWZjQ1rx4Loy1ArBggoqGpfqqdI4rondg=="
-  "resolved" "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.0.tgz"
-  "version" "4.1.0"
+  "integrity" "sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g=="
+  "resolved" "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.1.tgz"
+  "version" "4.1.1"
 
 "ansi-regex@^5.0.0", "ansi-regex@^5.0.1":
   "integrity" "sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ=="
@@ -5598,9 +5598,9 @@
     "is-symbol" "^1.0.2"
 
 "es5-ext@^0.10.35", "es5-ext@^0.10.50":
-  "integrity" "sha512-L7cCNoPwTkAp7IBHxrKLsh7NKiVFkcdxlP9vbVw9QUvb7gF0Mz9bEBN0WY9xqdTjGF907EMT/iG013vnbqwu1Q=="
-  "resolved" "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.57.tgz"
-  "version" "0.10.57"
+  "integrity" "sha512-LHO+KBBaHGwjy32ibSaMY+ZzjpC4K4I5bPoijICMBL7gXEXfrEUrzssmNP+KigbQEp1dRUnGkry/vUnxOqptLQ=="
+  "resolved" "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.58.tgz"
+  "version" "0.10.58"
   dependencies:
     "es6-iterator" "^2.0.3"
     "es6-symbol" "^3.1.3"
@@ -14537,10 +14537,10 @@
   dependencies:
     "isexe" "^2.0.0"
 
-"wonder-table@^0.1.0":
-  "integrity" "sha512-Pf/nFsMKX8tLfhxQUuQPcznKPsHeQnbbbuoZifkjNNWbTMEJptxP35SIfwVeq7thPpwH+vZtNTiPe2PeTybxGw=="
-  "resolved" "https://registry.npmjs.org/wonder-table/-/wonder-table-0.1.0.tgz"
-  "version" "0.1.0"
+"wonder-table@^0.1.3":
+  "integrity" "sha512-fiBpUDrUqYdELzl23KowUxprtijSaLXjcZWyStb1VinMjXBbIWxJbmWBts1kiIKjKj+F6xRjN+HJKDuIdjCF+w=="
+  "resolved" "https://registry.npmjs.org/wonder-table/-/wonder-table-0.1.3.tgz"
+  "version" "0.1.3"
   dependencies:
     "@babel/polyfill" "^7.12.1"
     "@testing-library/jest-dom" "^5.15.1"

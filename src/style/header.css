@@ -6,9 +6,15 @@ header {
   align-items: center;
   margin-bottom: 5px;
 }
+
+.header-title {
+  cursor: pointer;
+  color: #e3cd8b;
+}
+
 .nav-link {
   text-decoration: none;
-  color: #137c8b;
+  color: #e3cd8b;
   font-weight: bold;
 }
 

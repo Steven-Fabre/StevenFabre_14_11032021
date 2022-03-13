@@ -13,20 +13,19 @@ export default function EmployeeForm() {
   const [city, setCity] = useState("");
   const [state, setState] = useState(states[0].abbreviation);
   const [zipCode, setZipCode] = useState("");
-  const [error, setError] = useState([]);
+  const [modalMessage, setModalMessage] = useState("");
+  const [displayModal, setDisplayModal] = useState(false);
   const employeeData = {
     First_Name: firstName,
     Last_Name: lastName,
     Start_Date: startDate,
-    Departement: department,
+    Department: department,
     Birth_Date: birthDate,
     Street: street,
     City: city,
     State: state,
     Zip_Code: zipCode,
   };
-
-  useEffect(() => {});
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,59 +37,55 @@ export default function EmployeeForm() {
     });
 
     if (error.length !== 0) {
-      setError(error);
+      setModalMessage(`${error.join(", ").replaceAll("_", " ")} ${error.length >= 2 ? "are" : "is"} required`);
+      setDisplayModal(true);
+    } else {
+      asysendForm(employeeData);
+
+      document.getElementById("create-employee").reset();
     }
   };
 
-  // const asysendForm = async (obj) => {
-  //   const message = document.getElementById("form-modal");
-  //   const rawResponse = await fetch("http://127.0.0.1:3000/api/", {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(obj),
-  //   });
-  //   const content = await rawResponse.json();
-
-  //   if (content) {
-  //     message.classList.remove("hide");
-  //     message.innerHTML = "";
-  //     message.insertAdjacentHTML(
-  //       "beforeend",
-  //       `
-  //           <h1>Merci pour votre envoi</h1>
-  //           <p>Le formulaire à bien été envoyé et le point d'intérêt sera ajouté au plus vite</p>
-  //           `
-  //     );
-  //   }
-  // };
+  const asysendForm = async (obj) => {
+    const rawResponse = await fetch("http://127.0.0.1:5000/api/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+    const content = await rawResponse.json();
+    if (!content.error) {
+      setModalMessage("Employee created !");
+      setDisplayModal(true);
+    }
+  };
 
   return (
     <section className="form-container">
       <h2 className="form-title">Create Employee</h2>
       <form onSubmit={handleSubmit} id="create-employee">
         <label htmlFor="first-name">First Name</label>
-        <input type="text" onChange={(e) => setFirstName(e.target.value)} id="first-name" />
+        <input className="form-input" type="text" onChange={(e) => setFirstName(e.target.value)} id="first-name" />
 
         <label htmlFor="last-name">Last Name</label>
-        <input type="text" onChange={(e) => setLastName(e.target.value)} id="last-name" />
+        <input className="form-input" type="text" onChange={(e) => setLastName(e.target.value)} id="last-name" />
 
         <label htmlFor="date-of-birth">Date of Birth</label>
-        <input type="date" id="date-of-birth" onChange={(e) => setBirthDate(e.target.value)} />
+        <input className="form-input" type="date" id="date-of-birth" onChange={(e) => setBirthDate(e.target.value)} />
 
         <label htmlFor="start-date">Start Date</label>
-        <input type="date" id="start-date" onChange={(e) => setStartDate(e.target.value)} />
+        <input className="form-input" type="date" id="start-date" onChange={(e) => setStartDate(e.target.value)} />
 
         <fieldset className="address">
           <legend>Address</legend>
 
           <label htmlFor="street">Street</label>
-          <input id="street" onChange={(e) => setStreet(e.target.value)} type="text" />
+          <input className="form-input" id="street" onChange={(e) => setStreet(e.target.value)} type="text" />
 
           <label htmlFor="city">City</label>
-          <input id="city" onChange={(e) => setCity(e.target.value)} type="text" />
+          <input className="form-input" id="city" onChange={(e) => setCity(e.target.value)} type="text" />
 
           <label htmlFor="state">State</label>
           <select name="state" onChange={(e) => setState(e.target.value)} id="state">
@@ -102,7 +97,7 @@ export default function EmployeeForm() {
           </select>
 
           <label htmlFor="zip-code">Zip Code</label>
-          <input id="zip-code" onChange={(e) => setZipCode(e.target.value)} type="number" />
+          <input className="form-input" id="zip-code" onChange={(e) => setZipCode(e.target.value)} type="number" />
         </fieldset>
 
         <label htmlFor="department">Department</label>
@@ -115,7 +110,7 @@ export default function EmployeeForm() {
         </select>
         <button className="save-button">Save</button>
       </form>
-      {error.length > 0 ? <Modal error={error} setError={setError} /> : ""}
+      {displayModal ? <Modal setDisplayModal={setDisplayModal} message={modalMessage} /> : ""}
     </section>
   );
 }

@@ -9,14 +9,15 @@
   left: 0;
   top: 0;
   margin: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 9;
 }
 
 .modal-message {
-  background-color: #137c8b;
+  background-color: #e3cd8b;
+  border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding: 5px;
+  padding: 2em;
   text-align: center;
   max-width: 400px;
   max-height: 600px;
@@ -24,7 +25,7 @@
 
 .modal-cross {
   cursor: pointer;
-  background-color: #137c8b;
+  background-color: #e3cd8b;
   border-radius: 50px;
   display: flex;
   justify-content: center;

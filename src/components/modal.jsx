@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import "../style/modal.css";
 
-export default function Modal({ error, setError }) {
+export default function Modal({ setDisplayModal, message = "Oops, quelque chose s'est mal déroulé 😅" }) {
   return (
     <div
       onClick={() => {
-        setError([]);
+        setDisplayModal(false);
       }}
       className="modal"
     >
-      <p className="modal-message">{`${error.join(", ").replaceAll("_", " ")} ${
-        error.length >= 2 ? "are" : "is"
-      } required`}</p>
+      <p className="modal-message">{message}</p>
       <p className="modal-cross">X</p>
     </div>
   );
