@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../../components/header";
 import Table from "wonder-table";
-import { mock } from "../../mock";
 import { useFetch } from "../../utils/useFetch";
 import "../../style/table.css";
 
